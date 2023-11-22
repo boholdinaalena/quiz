@@ -1,0 +1,262 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer base {
+  @font-face {
+    font-family: Lit-Decor;
+    font-weight: 900;
+    src: url(/Literature-Decor.ttf) format("ttf");
+  }
+}
+
+* {
+  background: #eeeeee;
+}
+
+
+.questions-div {
+  display:flexbox;
+  margin-left: 35%;
+  font-size: 13pt;
+  margin-right: 20%;
+}
+
+label {
+  line-height: 10px;
+}
+
+.option-input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  position: relative;
+  top: 8px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  transition: all 0.15s ease-out 0s;
+  background: pink;
+  border: lightpink;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  margin-right: 0.5rem;
+  outline: none;
+  position: relative;
+  z-index: 100;
+  border-radius: 100px;
+}
+
+.option-input:hover {
+  background: #9faab7;
+  box-shadow: 0 0 20px rgb(255, 187, 187);
+}
+
+.option-input:checked {
+  background: #ff8a8a;
+  box-shadow: 0 0 20px #ff8a8a;
+}
+
+.option-input:checked::before {
+  width: 25px;
+  height: 25px;
+  display: flex;
+  content: '✔';
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: bold;
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Font Awesome 5 Free';
+}
+
+.option-input:checked::after {
+  -webkit-animation: click-wave 0.65s;
+  -moz-animation: click-wave 0.65s;
+  animation: click-wave 0.65s;
+  background: lightpink;
+  content: '';
+  display: block;
+  position: relative;
+  z-index: 100;
+  border-radius: 100px;
+}
+
+.option-input.radio {
+  border-radius: 50%;
+}
+
+.option-input.radio::after {
+  border-radius: 50%;
+}
+
+@keyframes click-wave {
+  0% {
+    height: 40px;
+    width: 40px;
+    opacity: 0.35;
+    position: relative;
+  }
+
+  100% {
+    height: 200px;
+    width: 200px;
+    margin-left: -80px;
+    margin-top: -80px;
+    opacity: 0;
+  }
+}
+
+#popup {
+  background: none;
+  position: fixed;
+  z-index: 1000;
+  left: 25%;
+  right: 25%;
+  width: 50%;
+  top: 30%;
+  height: 40%;
+  background: #1a1a1a;
+  color: #eeeeee;
+  border-radius: 50px;
+  box-shadow: 0 0 20px #ff8a8a;
+  transition: box-shadow 0.5s;
+  animation: shadow 5s infinite;
+  border: #fff solid 1.5px;
+}
+
+@keyframes shadow {
+  0% {
+    box-shadow: 0 0 60px #ff8a8a;
+  }
+  20% {
+    box-shadow: 0 0 30px #ea3737;
+  }
+  50% {
+    box-shadow: 0 0 60px #ff6c6c;
+  }
+  70% {
+    box-shadow: 0 0 70px #ff3131;
+  }
+  100% {
+    box-shadow: 0 0 60px #ff8a8a;
+  }
+  
+}
+
+
+
+#popup > p {
+  background:none;
+  position: fixed;
+  z-index: 1010;
+}
+
+.opacity {
+  color: transparent;
+  background-size: cover;
+  z-index: 1000;
+  height: 100%;
+  width: 100%;
+  top: 0%;
+  opacity: 0.7;
+  position: fixed;
+}
+
+.wrap {
+  background: none;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button {
+  min-width: 130px;
+  height: 50px;
+  font-size: 18px;
+  letter-spacing: 1.3px;
+  font-weight: 700;
+  color: #313133;
+  background: #ffa7cc;
+  background: linear-gradient(90deg, rgb(255, 156, 156) 0%, rgb(255, 160, 163) 100%);
+  border: 2px solid #fff;
+  border-radius: 1000px;
+  box-shadow: 12px 12px 24px rgba(255, 146, 152, 0.64);
+  transition: all 0.3s ease-in-out 0s;
+  cursor: pointer;
+  outline: none;
+  position: fixed;
+  padding: 10px;
+  top: 60%;
+  right: 27%;
+  }
+
+button::before {
+content: '';
+  border-radius: 1000px;
+  min-width: calc(170px + 12px);
+  min-height: calc(60px + 12px);
+  border: 2px solid #ffdee3;
+  box-shadow: 0 0 60px rgba(242, 0, 16, 0.64);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: all .3s ease-in-out 0s;
+}
+
+.button:hover, .button:focus {
+  color: #313133;
+  transform: translateY(-6px);
+}
+
+button:hover::before, button:focus::before {
+  opacity: 1;
+}
+
+button::after {
+  content: '';
+  width: 30px; height: 30px;
+  border-radius: 100%;
+  border: 6px solid #ff002f;
+  position: absolute;
+  z-index: -1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: ring 1.5s infinite;
+}
+
+button:hover::after, button:focus::after {
+  animation: none;
+  display: none;
+}
+
+@keyframes ring {
+  0% {
+    width: 30px;
+    height: 30px;
+    opacity: 0;
+  }
+  100% {
+    width: 100px;
+    height: 100px;
+    opacity: 0.5;
+  }
+}
+
+#main {
+  position: relative;
+  top: 0%;
+  right: 0%;
+  margin: 30px;
+}
